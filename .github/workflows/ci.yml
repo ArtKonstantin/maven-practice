@@ -1,20 +1,20 @@
-name: ci
+name: ci # я придумал сам
 on:
   push:
     branches:
       - master
       - main
 jobs:
-  package:
+  package: # я придумал сам
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3 # скопирует репозиторий на эту машинку
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
-      - run: mvn -B package
+      - run: mvn -B package # run - если пишем свою команду, а не готовый чей-то action
       - uses: actions/upload-artifact@v3
         with:
-          name: app
-          path: target/app.jar
+          name: app # имя архива, который будет опубликован на GitHub'е
+          path: target/*.jar
